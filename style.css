@@ -1,0 +1,97 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ======= Header ========= */
+
+main,header{
+    width: 20%;
+    min-width: 320px;
+    margin: 0 auto;
+}
+
+main{
+    font-family: 'Open Sans', sans-serif;
+}
+
+header{
+    margin-top: 1em;
+    margin-bottom: 2em;
+}
+
+
+.tweet-input{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.logo-img{
+    width: 60px;
+    border-radius: 50%;
+    background-color: rgb(223, 223, 223);
+    margin-right: 1em;
+}
+
+textarea{
+   width: 100%;
+   height: 80px;
+   min-width: 200px;
+   resize: none;
+   padding: .5em;
+   font-size: 1.2em;
+   border: none;
+}
+
+.tweet-btn{
+    width: 100%;
+    min-width: 180px;
+    margin: 1em 0;
+    padding: .6em 0;
+    border-radius: 30px;
+    border: none;
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+    font-size: 1.4em;   
+}
+
+
+
+/* ======== Main ========= */
+
+.tweet{
+    margin-bottom: 1.8em;
+}
+
+.tweet-inner{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+
+.profile-pic{
+    width: 15%;
+    border-radius: 50%;
+    background-color: rgb(228, 226, 226);
+    margin-right: 1em;
+}
+
+.handle{
+    margin-bottom: 1em;
+}
+
+.tweet-text{
+    margin-bottom: 1.6em;
+    line-height: 1.5;
+    width: 250px;
+}
+
+.tweet-details{
+    display: flex;
+    justify-content: space-between;
+}
