@@ -33,17 +33,22 @@ function getFeedHtml(){
     return feedHtml
 }
 
+// display elements of the tweet on the browser
+
 function render(){
     document.getElementById('feed').innerHTML = getFeedHtml()
 }
 render()
 
-document.addEventListener("click", (e)=>{
+// click events for the tweet handle
 
+document.addEventListener("click", (e)=>{
     if(e.target.dataset.like){
         handleClick(e.target.dataset.like);
+    } 
+    else if(e.target.dataset.retweet){
+        handleRetweet(e.target.dataset.retweet)
     }
-    
 })
 
 function handleClick(tweetId){
@@ -57,4 +62,17 @@ function handleClick(tweetId){
     targetTweetObj.isLiked = true
    }
    render()
+}
+
+function handleRetweet(tweetId){
+    const targetTweetObj = tweetsData.filter((tweet) => tweet.uuid === tweetId)[0]
+
+    if(targetTweetObj.isRetweeted){
+        targetTweetObj.retweets--
+        targetTweetObj.isRetweeted = false
+    }else{
+        targetTweetObj.retweets++
+        targetTweetObj.isRetweeted = true
+    }
+    render()
 }
