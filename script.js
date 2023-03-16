@@ -1,4 +1,81 @@
 import {tweetsData} from './data.js'
+import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
+
+const tweetInput = document.getElementById('tweet-area')
+
+
+// click events for the tweet handle
+
+document.addEventListener("click", (e)=>{
+    if(e.target.dataset.like){
+        handleClick(e.target.dataset.like);
+    } 
+    else if(e.target.dataset.retweet){
+        handleRetweet(e.target.dataset.retweet)
+    }
+    else if(e.target.dataset.reply){
+        handleReplyClick(e.target.dataset.reply)
+    }
+    else if(e.target.id === 'tweet-btn'){
+        handleTweetBtnClick()
+    }
+})
+
+// handleClick function to control the like tweet icon
+
+function handleClick(tweetId){
+    const targetTweetObj = tweetsData.filter((tweet) => tweet.uuid === tweetId)[0]
+    
+    if(targetTweetObj.isLiked){
+     targetTweetObj.likes--
+     targetTweetObj.isLiked = false
+    }else{
+     targetTweetObj.likes++
+     targetTweetObj.isLiked = true
+    }
+    render()
+}
+
+// handleRetweet function to control the retweet function
+
+function handleRetweet(tweetId){
+    const targetTweetObj = tweetsData.filter((tweet) => tweet.uuid === tweetId)[0]
+
+    if(targetTweetObj.isRetweeted){
+        targetTweetObj.retweets--
+        targetTweetObj.isRetweeted = false
+    }else{
+        targetTweetObj.retweets++
+        targetTweetObj.isRetweeted = true
+    }
+    render()
+}
+
+// toggle replies to hide/unhide
+
+function handleReplyClick(replyId){
+    document.getElementById(`replies-${replyId}`).classList.toggle('hidden')
+}
+
+// add a tweet
+
+function handleTweetBtnClick(){
+    if(tweetInput.value){
+        tweetsData.unshift({
+            handle: `@twimbabot000000`,
+            profilePic: `images/logo.png`,
+            likes: 0,
+            retweets: 0,
+            tweetText: tweetInput.value,
+            replies: [],
+            isLiked: false,
+            isRetweeted: false,
+            uuid: uuidv4()
+        })
+        render()
+        tweetInput.value = ''
+    }  
+}
 
 // tweet function to display tweet data
 
@@ -74,57 +151,9 @@ function getFeedHtml(){
     return feedHtml
 }
 
-// display elements of the tweet on the browser
+// render the elements of the tweet on the browser
 
 function render(){
     document.getElementById('feed').innerHTML = getFeedHtml()
 }
 render()
-
-// click events for the tweet handle
-
-document.addEventListener("click", (e)=>{
-    if(e.target.dataset.like){
-        handleClick(e.target.dataset.like);
-    } 
-    else if(e.target.dataset.retweet){
-        handleRetweet(e.target.dataset.retweet)
-    }
-    else if(e.target.dataset.reply){
-        handleReplyClick(e.target.dataset.reply)
-    }
-})
-
-// handleClick function to control the like tweet icon
-
-function handleClick(tweetId){
-   const targetTweetObj = tweetsData.filter((tweet) => tweet.uuid === tweetId)[0]
-   
-   if(targetTweetObj.isLiked){
-    targetTweetObj.likes--
-    targetTweetObj.isLiked = false
-   }else{
-    targetTweetObj.likes++
-    targetTweetObj.isLiked = true
-   }
-   render()
-}
-
-// handleRetweet function to control the retweet function
-
-function handleRetweet(tweetId){
-    const targetTweetObj = tweetsData.filter((tweet) => tweet.uuid === tweetId)[0]
-
-    if(targetTweetObj.isRetweeted){
-        targetTweetObj.retweets--
-        targetTweetObj.isRetweeted = false
-    }else{
-        targetTweetObj.retweets++
-        targetTweetObj.isRetweeted = true
-    }
-    render()
-}
-
-function handleReplyClick(replyId){
-    document.getElementById(`replies-${replyId}`).classList.toggle('hidden')
-}
