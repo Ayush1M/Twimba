@@ -11,15 +11,14 @@ main,header{
     width: 20%;
     min-width: 320px;
     margin: 0 auto;
-}
-
-main{
     font-family: 'Open Sans', sans-serif;
 }
 
 header{
     margin-top: 1em;
     margin-bottom: 2em;
+    color: #0A72B3;
+    font-size: 1em;
 }
 
 
@@ -36,6 +35,10 @@ header{
     margin-right: 1em;
 }
 
+.reply-logo-img{
+    margin-right: 0;
+}
+
 
 /* ======= text-area and btn ======= */
 
@@ -49,6 +52,11 @@ textarea{
    border: none;
 }
 
+.reply-tweet-area{
+    height: 50px;
+    margin: 0 .4em;
+}
+
 .tweet-btn{
     width: 100%;
     min-width: 180px;
@@ -56,28 +64,38 @@ textarea{
     padding: .6em 0;
     border-radius: 30px;
     border: none;
-    background-color: blue;
+    background-color: #1DA1F2;
     color: white;
     cursor: pointer;
     font-size: 1.4em;   
 }
 
+.reply-tweet-input{
+    margin: 1em 0;
+}
+
+.reply-tweet-btn{
+    font-size: 1em;
+    width: 100%;
+    min-width: 80px;
+    margin: 0;
+}
 
 
 /* ======== Main ========= */
 
 .tweet{
-    margin-bottom: 1.8em;
+    margin-bottom: 1em;
     padding-top: 1em;
-    border-top: 1px solid lightgray;
 }
 
 .tweet-inner{
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    border-top: 1px solid lightgray;
+    padding-top: 1em;
 }
-
 
 .profile-pic{
     width: 15%;
@@ -87,7 +105,9 @@ textarea{
 }
 
 .handle{
-    margin-bottom: 1em;
+    margin-bottom: .4em;
+    font-size: .875em;
+    font-weight: bold;
 }
 
 .tweet-text{
@@ -101,6 +121,10 @@ textarea{
     justify-content: space-between;
 }
 
+.hidden{
+    display: none;
+}
+
 .fa-solid{
     color: #999;
 }
@@ -108,4 +132,12 @@ textarea{
 .fa-solid,
 .fa-regular{
     cursor: pointer;
+}
+
+.liked{
+    color: rgb(241, 43, 43);
+}
+
+.retweeted{
+    color: rgb(61, 240, 61);
 }
