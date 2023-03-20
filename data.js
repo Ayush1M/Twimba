@@ -18,13 +18,13 @@ export const tweetsData = [
         retweets: 234,
         tweetText: `I need volunteers for a one-way mission to Mars 🪐. No experience necessary🚀`,
         replies: [
-                  {
+                {
                 handle: `@beentospace`,
                 profilePic: `images/beentospace.png`,
                 tweetText: `Yes! Sign me Up! 😎`,
             },
-                  {
-                handle: `@Elon`,
+                {
+                handle: `@Elon✅`,
                 profilePic: `images/elon.png`,
                 tweetText: `I went there last Year!😴`,
             },
@@ -43,12 +43,12 @@ export const tweetsData = [
             {
                 handle: `@stackoverflower`,
                 profilePic: `images/stackoverflower.png`,
-                tweetText: `NO. Obviously not, go get a job in Mcdonald's.`,
+                tweetText: `NO. Obviously not, go get a job in Mcdonald's.😑`,
             },
             {
                 handle: `@mdngeek`,
                 profilePic: `images/mdngeek.jpg`,
-                tweetText: `You are doing great and you need to know a bit more than this and you be awesome!!`,
+                tweetText: `You are doing great!!😄`,
             },
         ],
         isLiked: false,
