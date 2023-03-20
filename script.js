@@ -19,6 +19,9 @@ document.addEventListener("click", (e) => {
   else if (e.target.id === "reply-tweet-btn") {
     handleReplyBtnClick(e.target.dataset.replytext)
   }
+  else if(e.target.dataset.delete){
+    handleDeleteBtn(e.target.dataset.delete)
+  }
 })
 
 // handleClick function to control the like tweet icon
@@ -98,8 +101,18 @@ function handleReplyBtnClick(tweetId) {
       uuid: uuidv4()
     })
     render()
-    console.log(targetTweetObj)
   }
+}
+
+// delete a tweet
+
+function handleDeleteBtn(tweetId){
+
+  const targetTweetObj = tweetsData.filter((tweet) => tweet.uuid === tweetId)[0]
+
+  tweetsData.splice(tweetsData.indexOf(targetTweetObj), 1)
+
+  render()
 }
 
 // tweet function to display tweet data
@@ -109,16 +122,12 @@ function getFeedHtml() {
   let feedHtml = ``
 
   tweetsData.forEach((tweet) => {
-    let likeIconClass = ""
-    let retweetIconClass = ""
 
-    if (tweet.isLiked) {
-      likeIconClass = "liked"
-    }
+    // rendering like and retweet icons to like or retweet a tweet and add css class to it.
 
-    if (tweet.isRetweeted) {
-      retweetIconClass = "retweeted"
-    }
+    const likeIconClass = tweet.isLiked ? "liked" : ""
+
+    const retweetIconClass = tweet.isRetweeted ? "retweeted" : ""
 
     // showing replies from the tweets data
 
@@ -134,6 +143,7 @@ function getFeedHtml() {
                 <p class="handle">${reply.handle}</p>
                 <p class="tweet-text">${reply.tweetText}</p>
                 </div>
+                <i class="fa-solid fa-trash-can" id="delete-btn" data-deletereply="${reply.uuid}"></i>
                 </div>
                 </div>
                 `
@@ -161,6 +171,9 @@ function getFeedHtml() {
                 <span class="tweet-detail">
                 <i class="fa-solid fa-retweet ${retweetIconClass}" data-retweet = "${tweet.uuid}"></i>
                     ${tweet.retweets}
+                </span>
+                <span class="tweet-detail">
+                <i class="fa-solid fa-trash-can" data-delete="${tweet.uuid}"></i>
                 </span>
             </div>   
         </div>            
