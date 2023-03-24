@@ -9,6 +9,12 @@
  
 # Overview of the Project
 
+Twimba is a web application which works on the functionalities of twitter app but with my own design and consist of the following features :-
+- Like or unlike a tweet.
+- Retweet a tweet.
+- Reply to a particular tweet.
+- Add your own Tweet.
+- Delete a tweet.
 
 ## Screenshot
 
@@ -20,3 +26,6 @@
 
 ## What I Learned
 
+- Learned how to pass data using forEach.
+- Learned about data attributes.
+- Learned how to conditionally render styles in JS.
