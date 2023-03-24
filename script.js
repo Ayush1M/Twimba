@@ -22,6 +22,9 @@ document.addEventListener("click", (e) => {
   else if(e.target.dataset.delete){
     handleDeleteBtn(e.target.dataset.delete)
   }
+  else if(e.target.dataset.deletereply){
+    handleReplyDeleteBtn(e.target.dataset.deletereply)
+  }
 })
 
 // handleClick function to control the like tweet icon
@@ -101,6 +104,7 @@ function handleReplyBtnClick(tweetId) {
       uuid: uuidv4()
     })
     render()
+    handleReplyClick(tweetId)
   }
 }
 
@@ -111,6 +115,19 @@ function handleDeleteBtn(tweetId){
   const targetTweetObj = tweetsData.filter((tweet) => tweet.uuid === tweetId)[0]
 
   tweetsData.splice(tweetsData.indexOf(targetTweetObj), 1)
+
+  render()
+}
+
+// delete a reply of a tweet 
+
+function handleReplyDeleteBtn(replyId){
+
+  const targetTweetObj = tweetsData.filter((tweet) => tweet.replies.find((reply) => reply.uuid === replyId))[0].replies
+
+  const targetReplyObj = targetTweetObj.find((comment)=> comment.uuid === replyId)
+
+  targetTweetObj.splice(targetTweetObj.indexOf(targetReplyObj), 1)
 
   render()
 }
@@ -143,7 +160,7 @@ function getFeedHtml() {
                 <p class="handle">${reply.handle}</p>
                 <p class="tweet-text">${reply.tweetText}</p>
                 </div>
-                <i class="fa-solid fa-trash-can" id="delete-btn" data-deletereply="${reply.uuid}"></i>
+                <i class="fa-solid fa-trash-can" data-deletereply="${reply.uuid}"></i>
                 </div>
                 </div>
                 `
