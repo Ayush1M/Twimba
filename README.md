@@ -15,8 +15,11 @@ Twimba is a web application which works on the functionalities of twitter app bu
 - Reply to a particular tweet.
 - Add your own Tweet.
 - Delete a tweet.
+- Delete a reply of a tweet.
 
 ## Screenshot
+
+<p align = "center"><img src="images/screenshot.png"></p>
 
 
 ## Technologies I Used
