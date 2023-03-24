@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "https://jspm.dev/uuid";
+
 export const tweetsData = [   
     {
         handle: `@Trollkid ninja`,
@@ -22,11 +24,13 @@ export const tweetsData = [
                 handle: `@beentospace`,
                 profilePic: `images/beentospace.png`,
                 tweetText: `Yes! Sign me Up! 😎`,
+                uuid : uuidv4()
             },
                 {
                 handle: `@Elon✅`,
                 profilePic: `images/elon.png`,
                 tweetText: `I went there last Year!😴`,
+                uuid : uuidv4()
             },
         ],
         isLiked: false,
@@ -44,11 +48,13 @@ export const tweetsData = [
                 handle: `@stackoverflower`,
                 profilePic: `images/stackoverflower.png`,
                 tweetText: `NO. Obviously not, go get a job in Mcdonald's.😑`,
+                uuid : uuidv4()
             },
             {
                 handle: `@mdngeek`,
                 profilePic: `images/mdngeek.jpg`,
                 tweetText: `You are doing great!!😄`,
+                uuid : uuidv4()
             },
         ],
         isLiked: false,
