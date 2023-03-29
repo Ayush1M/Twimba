@@ -72,6 +72,7 @@ function handleReplyClick(replyId) {
 function handleTweetBtnClick() {
     const tweetInput = document.getElementById("tweet-area")
 
+    if(tweetInput.value){
     tweetsData.unshift({
       handle: `@twimbabot000000`,
       profilePic: `images/logo.png`,
@@ -85,6 +86,7 @@ function handleTweetBtnClick() {
     })
     render()
     tweetInput.value = ""
+  }
 }
 
 // add a reply
